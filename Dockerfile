@@ -1,4 +1,4 @@
-# c11k/serviceandgoods:latest
+# c11k/serviceandgoods:pcov
 # For unit testing and deployment
 # Set the base image for subsequent instructions
 FROM phpdockerio/php74-fpm:latest
@@ -8,7 +8,7 @@ ARG VCS_REF
 LABEL maintainer="Jeff Harris <jeff@jeffharris.us>" \
   org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.description="Inventory system for a goods and services shop." \
-  org.label-schema.name="main.serviceandgoods" \
+  org.label-schema.name="pcov.serviceandgoods" \
   org.label-schema.schema-version="1.0" \
   org.label-schema.url="https://inventory.jeffharris.us" \
   org.label-schema.vcs-ref=$VCS_REF \
@@ -23,12 +23,14 @@ LABEL maintainer="Jeff Harris <jeff@jeffharris.us>" \
 # Update packages
 RUN apt-get update \
 	&& apt-get -y --no-install-recommends install \
-	    php7.4-dom \
+	    make \
+        php7.4-dom \
 		php7.4-gd \
 		php7.4-json \
 		php7.4-mbstring \
         php7.4-mysql \
         php7.4-opcache \
+	    php7.4-pcov \
         php7.4-pdo \
         php7.4-redis \
         php7.4-sqlite3 \
@@ -38,5 +40,3 @@ RUN apt-get update \
     && apt-get install -y --only-upgrade php7.4-cli php7.4-common \
     && apt-get autoremove -y \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
-
-RUN mkdir /application && ln -s /application /opt/project

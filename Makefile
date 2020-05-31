@@ -1,2 +1,2 @@
 build:
-	docker build -t c11k/serviceandgoods .
+	docker build -t c11k/serviceandgoods:pcov .

@@ -1,4 +1,4 @@
-# c11k/serviceandgoods:pcov
+# c11k/serviceandgoods:xdebug
 # For unit testing and deployment
 # Set the base image for subsequent instructions
 FROM phpdockerio/php74-fpm:latest
@@ -30,11 +30,11 @@ RUN apt-get update \
 		php7.4-mbstring \
         php7.4-mysql \
         php7.4-opcache \
-	    php7.4-pcov \
         php7.4-pdo \
         php7.4-redis \
         php7.4-sqlite3 \
         php7.4-zip \
+        php-xdebug \
         sqlite \
         unzip \
     && apt-get install -y --only-upgrade php7.4-cli php7.4-common \

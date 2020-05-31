@@ -1,2 +1,2 @@
 build:
-	docker build -t c11k/serviceandgoods:pcov .
+	docker build -t c11k/serviceandgoods:xdebug .
